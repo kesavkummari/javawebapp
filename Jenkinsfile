@@ -7,7 +7,6 @@ node {
 
   stage ('Clean') {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean"
-    }
   }
   stage ('Validate') {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore validate"
