@@ -1,19 +1,39 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Clean') { 
+        stage('clean') {
             steps {
-                sh 'mvn clean' 
+                sh 'mvn clean'
             }
         }
-        stage('Validate') { 
+        stage('validate') {
             steps {
-                sh 'mvn validate' 
+                sh 'mvn validate'
             }
         }
-        stage('Compile') { 
+         stage('compile') {
             steps {
                 sh 'mvn compile'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'mvn test -DskipTests'
+            }
+        }
+        stage('package') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
+        stage('verify') {
+            steps {
+                sh 'mvn verify -DskipTests'
+            }
+        }
+         stage('install') {
+            steps {
+                sh 'mvn install -DskipTests'
             }
         }
     }
