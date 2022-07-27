@@ -1,40 +1,13 @@
-pipeline {
-    agent any 
-    stages {
-        stage('Clean') { 
-            steps {
-                sh 'mvn clean' 
-            }
-        }
-        stage('Validate') { 
-            steps {
-                sh 'mvn validate' 
-            }
-        }
-        stage('Compile') { 
-            steps {
-                sh 'mvn compile'  
-            }
-        }
-        stage('Test') { 
-            steps {
-                sh 'mvn test -DskipTests'  
-            }
-        }
-        stage('Package') { 
-            steps {
-                sh 'mvn package -DskipTests'  
-            }
-        }
-         stage('Verify') { 
-            steps {
-                sh 'mvn verify -DskipTests'  
-            }
-        }
-         stage('Install') { 
-            steps {
-                sh 'mvn install -DskipTests'   
-            }
-        }
+node {
+  stage ('Download the Source Code & Clean') {
+    git url: 'https://github.com/kesavkummari/javawebapp.git'
+    withMaven {
+      sh "mvn clean"
     }
+  }
+  stage ('Validate') {
+    withMaven {
+      sh "mvn Validate"
+    }
+  }
 }
