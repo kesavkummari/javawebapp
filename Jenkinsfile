@@ -1,7 +1,7 @@
 node {
    def mvnHome
    stage('Prepare') {
-      git url: 'https://github.com/kesavkummari/javawebapp.git', branch: 'main'
+      git url: 'https://github.com/kesavkummari/javawebapp.git', branch: 'azure-rrtech-qa'
       mvnHome = tool 'maven'
     }
 
