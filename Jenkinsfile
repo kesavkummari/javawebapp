@@ -1,13 +1,15 @@
 node {
-  stage ('Download the Source Code & Clean') {
-    git url: 'https://github.com/kesavkummari/javawebapp.git'
-    withMaven {
-      sh "mvn clean"
+   def mvnHome
+   stage('Prepare') {
+      git url: 'git@github.com/kesavkummari/javawebapp.git', branch: 'rrtech-qa'
+      mvnHome = tool 'maven'
+   }
+
+  stage ('Clean') {
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean"
     }
   }
   stage ('Validate') {
-    withMaven {
-      sh "mvn Validate"
-    }
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore validate"
   }
 }
