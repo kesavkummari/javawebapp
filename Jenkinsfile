@@ -3,7 +3,7 @@ pipeline {
     stages {
          stage('Static Code Analysis') {
              steps {
-                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=rrtech-azure'
+                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=rrtech-azure -DskipTests'
              }
           }
 //         stage('clean') {
