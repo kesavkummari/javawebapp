@@ -36,5 +36,11 @@ pipeline {
                 sh 'mvn install -DskipTests'
             }
         }
+         stage('Deployment - Deploy a Artifact devtech-1.0.0.war file to Tomcat Server') { 
+            steps {
+                sh 'curl -u admin:redhat@123 -T target/**.war "http://34.229.94.145:8080/manager/text/deploy?path=/azuredevops&update=true"'
+            }
+        }  
+       
     }
 }
