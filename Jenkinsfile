@@ -8,24 +8,24 @@ node {
     }
 
     stage('Clean'){
-       sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean'
+       sh '${mvnHome}/bin/mvn clean'
     }
     stage('Validate'){
-        sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore validate'
+        sh '${mvnHome}/bin/mvn validate'
     }
     stage('Compile'){
-        sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore compile'
+        sh '${mvnHome}/bin/mvn compile'
     }
     stage('Test'){
-        sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore test -DskipTests'
+        sh '${mvnHome}/bin/mvn test -DskipTests'
     }
     stage('Package'){
-        sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore package -DskipTests'
+        sh '${mvnHome}/bin/mvn package -DskipTests'
     }
     stage('Verfiy'){
-        sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore verify -DskipTests'
+        sh '${mvnHome}/bin/mvn verify -DskipTests'
     }
     stage('Install'){
-        sh '${mvnHome}/bin/mvn -Dmaven.test.failure.ignore install -DskipTests'
+        sh '${mvnHome}/bin/mvn install -DskipTests'
     }
 }
