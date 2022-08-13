@@ -11,5 +11,30 @@ pipeline {
                 sh 'mvn validate'
             }
         }
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test -DskipTests'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
+        stage('Verify') {
+            steps {
+                sh 'mvn verify -DskipTests'
+            }
+        }
+        stage('Install') {
+           steps {
+               sh 'mvn install -DskipTests'
+            }
+        }
     }
 }
