@@ -47,7 +47,20 @@
         <url>http://54.163.9.206:8081/artifactory/lib-cloudbinary-local/</url>
     </repository>
 </distributionManagement>
+	 -->
 	
+	<distributionManagement>
+	<repository>
+		 <id>rrtech-dev</id>
+  		 <url>https://pkgs.dev.azure.com/rrtech-dev/_packaging/rrtech-dev/maven/v1</url>
+	  <releases>
+	    <enabled>true</enabled>
+	  </releases>
+	  <snapshots>
+	    <enabled>true</enabled>
+	  </snapshots>
+	</repository>
+	</distributionManagement>
 	
 	<scm>
 		<connection>scm:git:git@github.com:kesavkummari/javawebapp.git</connection>
